@@ -1,0 +1,63 @@
+---
+title: "Portfolio2"
+author: "Steph Bossert"
+date: "5/11/2021"
+output: html_document
+---
+```{r}
+library(Hmisc)
+library(ggplot2)
+library(ggcorrplot)
+library(haven)
+library(haven)
+CLEAN_COPY_MASTER_BIT_4ITEM_PC_5MAR21 <- read_sav("~/Documents/Grad School Fall 2020/Research/Data/EWB Data.SPSS/CLEAN COPY MASTER BIT 4ITEM_PC 5MAR21.sav")
+```
+
+
+```{r}
+summary(CLEAN_COPY_MASTER_BIT_4ITEM_PC_5MAR21)
+library(Hmisc)
+library(ggplot2)
+library(ggcorrplot)
+library(haven)
+library(haven)
+PWB_merged_noitems <- read_sav("~/Documents/Grad School Fall 2020/Research/Data/EWB Data.SPSS/PWB State Data/PWB_merged_noitems.sav")
+View(PWB_merged_noitems)
+PWB_PC_4itemsmerged_4Mar21 <- read_sav("~/Documents/Grad School Fall 2020/Research/Data/EWB Data.SPSS/PWB State Data/PWB_PC_4itemsmerged_4Mar21.sav")
+View(PWB_PC_4itemsmerged_4Mar21)
+```
+
+```{r state Wk 44}
+m_PWB1= lm(PWB_Change_T1~PC_Wk45_mean, data = PWB_PC_4itemsmerged_4Mar21) #Create the linear regression
+summary(m_PWB1)
+ggplot(PWB_PC_4itemsmerged_4Mar21, aes(x=PWB_Change_T1, y=PC_Wk45_mean)) + 
+  geom_point(shape=18, color="blue")+
+  geom_smooth(method=lm, se=FALSE, linetype="solid",
+             color="green") 
+
+```
+
+```{r State Wk 51}
+#Relationship between perceptions of changes in flourshing and actual, state flourishing at Week 51
+m_PWB2= lm(PWB_Change_T2~PC_Wk52_mean, data = PWB_PC_4itemsmerged_4Mar21) #Create the linear regression
+summary(m_PWB2)
+ggplot(PWB_PC_4itemsmerged_4Mar21, aes(x=PWB_Change_T2, y=PC_Wk52_mean)) + 
+  geom_point(shape=18, color="blue")+
+  geom_smooth(method=lm, se=FALSE, linetype="solid",
+             color="purple") 
+
+
+```
+
+
+
+
+
+
+ 
+
+
+```
+
+
+
